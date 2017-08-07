@@ -1,0 +1,71 @@
+<td-layout-nav-list #navList
+                    logo="assets:firstidol"
+                    toolbarTitle="Firstidol"
+                    [opened]="media.registerQuery('gt-sm') | async"
+                    [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
+                    [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
+    <md-nav-list td-sidenav-content (click)="!media.query('gt-sm') && navList.close()">
+        <ng-template let-item let-last="last" ngFor [ngForOf]="products">
+          <a md-list-item [routerLink]="['/logs']">
+            <md-icon md-list-icon>{{item.icon}}</md-icon>
+            <h3 md-line> {{item.name}} </h3>
+          </a>
+        </ng-template>
+    </md-nav-list>
+    <div td-toolbar-content layout="row" layout-align="center center" flex>
+      <span hide-gt-md>Logs</span>
+      <span flex></span>
+      <a md-icon-button mdTooltip="Dashboard" [routerLink]="['/']"><md-icon>dashboard</md-icon></a>
+      <button md-icon-button [mdMenuTriggerFor]="notificationsMenu">
+        <td-notification-count color="accent" [notifications]="12">
+          <md-icon>notifications</md-icon>
+        </td-notification-count>
+      </button>
+      <md-menu #notificationsMenu="mdMenu">
+        <td-menu>
+          <div td-menu-header class="md-subhead">Job Openings</div>
+          <md-nav-list dense>
+            <a md-list-item>
+              <md-icon md-list-avatar>fiber_new</md-icon>
+              <h4 md-line><span class="text-wrap">Sr. Frontend Engineer</span></h4>
+              <p md-line>UX team</p>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+              <md-icon md-list-avatar>fiber_new</md-icon>
+              <h4 md-line><span class="text-wrap">Sr. Data Scientist</span></h4>
+              <p md-line>Data science team</p>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+              <md-icon md-list-avatar>fiber_new</md-icon>
+              <h4 md-line><span class="text-wrap">Sr. DevOps Engineer</span></h4>
+              <p md-line>DevOps team</p>
+            </a>
+          </md-nav-list>
+          <a md-button color="accent" td-menu-footer>
+            View Jobs
+          </a>
+        </td-menu>
+      </md-menu>
+    </div>
+    <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+      <md-card-title>Logs</md-card-title>
+      <md-divider></md-divider>
+      <ng-template tdLoading="items.load">
+        <md-list class="will-load" >
+          <div class="md-padding" *ngIf="!items || items.length === 0" layout="row" layout-align="center center">
+            <h3>No logs to display.</h3>
+          </div>
+          <ng-template let-item let-last="last" ngFor [ngForOf]="items">
+            <md-list-item [title]="item.description">
+              <md-icon md-list-icon> {{item.icon}} </md-icon>
+              <h3 md-line> {{item.description}} <span class="md-caption tc-grey-600">({{item.created}})</span> </h3>
+              <p md-line > {{item.name}} </p>
+            </md-list-item>
+            <md-divider *ngIf="!last"></md-divider>
+          </ng-template>
+        </md-list>
+      </ng-template>
+    </md-card>
+  </td-layout-nav-list>

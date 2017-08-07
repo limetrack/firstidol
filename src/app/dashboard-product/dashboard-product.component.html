@@ -1,0 +1,98 @@
+<td-layout-nav logo="assets:firstidol">
+  <div td-toolbar-content layout="row" layout-align="center center" flex>
+    <span>Firstidol</span>
+    <span flex></span>
+    <a md-icon-button mdTooltip="Dashboard" [routerLink]="['/']"><md-icon>dashboard</md-icon></a>
+    <a md-icon-button mdTooltip="Users" [routerLink]="['/users']"><md-icon>people</md-icon></a>
+    <a md-icon-button mdTooltip="Logs" [routerLink]="['/logs']"><md-icon>content_paste</md-icon></a>
+      <button md-icon-button [mdMenuTriggerFor]="notificationsMenu">
+        <td-notification-count color="accent" [notifications]="12">
+          <md-icon>notifications</md-icon>
+        </td-notification-count>
+      </button>
+      <md-menu #notificationsMenu="mdMenu">
+        <td-menu>
+          <div td-menu-header class="md-subhead">Job Openings</div>
+          <md-nav-list dense>
+            <a md-list-item>
+              <md-icon md-list-avatar>fiber_new</md-icon>
+              <h4 md-line><span class="text-wrap">Sr. Frontend Engineer</span></h4>
+              <p md-line>UX team</p>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+              <md-icon md-list-avatar>fiber_new</md-icon>
+              <h4 md-line><span class="text-wrap">Sr. Data Scientist</span></h4>
+              <p md-line>Data science team</p>
+            </a>
+            <md-divider></md-divider>
+            <a md-list-item>
+              <md-icon md-list-avatar>fiber_new</md-icon>
+              <h4 md-line><span class="text-wrap">Sr. DevOps Engineer</span></h4>
+              <p md-line>DevOps team</p>
+            </a>
+          </md-nav-list>
+          <a md-button color="accent" td-menu-footer>
+            View Jobs
+          </a>
+        </td-menu>
+      </md-menu>
+  </div>
+  <td-layout-manage-list #manageList
+                        [opened]="media.registerQuery('gt-sm') | async"
+                        [mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'push'"
+                        [sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
+    <!-- <md-toolbar td-sidenav-content>
+      <span>Product Name</span>
+    </md-toolbar> -->
+    <md-nav-list td-sidenav-content>
+      <a md-list-item
+        md-ripple class="block relative"
+        (click)="!media.query('gt-sm') && manageList.close()"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{exact:true}"
+        [routerLink]="['/product']">
+        <md-icon md-list-icon>dashboard</md-icon>
+        Dashboard
+      </a>
+      <a md-list-item
+        md-ripple class="block relative"
+        (click)="!media.query('gt-sm') && manageList.close()"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{exact:true}"
+        [routerLink]="['stats']">
+        <md-icon md-list-icon>insert_chart</md-icon>
+        Stats
+      </a>
+      <a md-list-item
+        md-ripple class="block relative"
+        (click)="!media.query('gt-sm') && manageList.close()"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{exact:true}"
+        [routerLink]="['features']">
+        <md-icon md-list-icon>star</md-icon>
+        Features
+      </a>
+      <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
+        <md-icon md-list-icon>people</md-icon>
+        Customers
+      </a>
+      <h3 md-subheader>Admin Menu</h3>
+      <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
+        <md-icon md-list-icon>receipt</md-icon>
+        Log
+      </a>
+      <a md-list-item (click)="!media.query('gt-sm') && manageList.close()" md-ripple class="block relative">
+        <md-icon md-list-icon>settings</md-icon>
+        Settings
+      </a>
+    </md-nav-list>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <span>{{title}}</span>
+      <span flex></span>
+      <button md-icon-button><md-icon class="md-24">sort</md-icon></button>
+      <button md-icon-button><md-icon class="md-24">settings</md-icon></button>
+    </div> 
+    <router-outlet></router-outlet>
+  </td-layout-manage-list>
+</td-layout-nav>
