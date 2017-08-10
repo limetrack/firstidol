@@ -11,7 +11,7 @@
   "scripts": {
     "heroku-prebuild": "npm install -g http-server",
     "heroku-postbuild": "ng build --prod  -aot",
-    // "start": "ng serve",
+    "dev": "ng serve",
     "start": "http-server dist/",
     "e2e": "ng e2e",
     "lint": "ng lint",
