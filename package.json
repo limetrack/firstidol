@@ -60,14 +60,15 @@
     "highlight.js": "9.10.0",
     "rxjs": "^5.4.0",
     "showdown": "1.6.4",
-    "zone.js": "^0.8.5"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.5",
     "@angular/cli": "1.2.6",
     "@angular/compiler-cli": "^4.2.0",
-    "@types/hammerjs": "2.0.30",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "typescript": "~2.3.1"
+  },
+  "devDependencies": {
+    "@types/hammerjs": "2.0.30",
     "@types/selenium-webdriver": "2.53.36",
     "codelyzer": "~3.0.0",
     "jasmine-core": "~2.5.2",
@@ -83,7 +84,7 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.1.0",
     "tslint": "^5.2.0",
-    "typescript": "~2.3.1"
+    "webdriver-manager": "10.2.5"
   },
   "optionalDependencies": {
     "@covalent/data": "0.7.0"
